@@ -1,0 +1,33 @@
+package com.example.marek.activitiesandintents;
+
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        //once the activity is created let's assign some code to the Button when it is clicked
+        Button msgButton = (Button)findViewById(R.id.messageButton);
+        //assign code to the onClickListener by defining
+        //an anonymous sublcass of OnClickListener and overriding its onClickMethod
+        msgButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                //in this example we will use the button to send a message
+                //let's create an intent
+                Intent msg_intent = new Intent(Intent.ACTION_SEND);
+                //add some extra information to the intent
+                msg_intent.putExtra(Intent.EXTRA_TEXT, "This is my message blah blah blah");
+                msg_intent.setType("text/plain"); //describes the MIME type of the content
+                //fire off the intent
+                startActivity(msg_intent);
+            }
+        });
+    }
+}
