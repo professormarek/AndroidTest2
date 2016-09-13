@@ -16,7 +16,9 @@ public class MainActivity extends AppCompatActivity {
         //once the activity is created let's assign some code to the Button when it is clicked
         Button msgButton = (Button)findViewById(R.id.messageButton);
         //assign code to the onClickListener by defining
-        //an anonymous sublcass of OnClickListener and overriding its onClickMethod
+        //an anonymous subclass of OnClickListener and overriding its onClickMethod
+        //notice here we are calling new and passing the created OnClickListener to the "setOnClickListener" method instead of storing the reference as a variable
+        //while at the same time overriding the onClick method. This is a common pattern seen in Java "in the wild"
         msgButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 //in this example we will use the button to send a message
